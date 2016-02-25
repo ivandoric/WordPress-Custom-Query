@@ -1,12 +1,14 @@
 <?php get_header(); ?>
 
 	<div class="container">
-        <h4 class="lesson-title">WP Custom Query - Ordering</h4>
+        <h4 class="lesson-title">WP Custom Query - Comparing</h4>
         <?php
                 $args = array(
                     'post_type' => 'post',
                     'posts_per_page' => 20,
-                    'meta_key' => 'order',
+                    'meta_key' => 'name',
+                    'meta_compare' => '!=',
+                    'meta_value' => 'John', 
                     'orderby' => 'meta_value',
                     'order' => 'ASC'
                 );

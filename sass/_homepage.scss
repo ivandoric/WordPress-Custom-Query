@@ -41,3 +41,22 @@
 .tags{
     @include span(6 of 12);
 }
+
+form{
+    padding:20px;
+    background: #def0f9;
+    margin-bottom: 40px;
+    
+    input, select{
+        padding:5px;
+    }
+
+    button{
+        background: #1d729c;
+        color:#fff;
+        border: none;
+        padding:10px 20px;
+        border-radius:5px;
+        font-size: 14px;
+    }
+}

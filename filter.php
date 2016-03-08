@@ -1,38 +1,34 @@
+<?php /* Template Name: Filter */ ?>
 <?php get_header(); ?>
+
     <?php 
         if($_GET['minprice'] && !empty($_GET['minprice']))
         {
             $minprice = $_GET['minprice'];
-        } else {
-            $minprice = 0;
         }
 
         if($_GET['maxprice'] && !empty($_GET['maxprice']))
         {
             $maxprice = $_GET['maxprice'];
-        } else {
-            $maxprice = 999999;
         }
-
         if($_GET['size'] && !empty($_GET['size']))
         {
             $size = $_GET['size'];
         }
-
         if($_GET['color'] && !empty($_GET['color']))
         {
             $color = $_GET['color'];
         }
     ?>
 
-
 	<div class="container">
-        <h4 class="lesson-title">WP Custom Query - Custom Filters</h4>
-        <form action="/" method="get">
+        <h4 class="lesson-title">WP Custom Query - Filters</h4>
+
+        <form action="<?php the_permalink(); ?>" method="get">
             <label>min:</label>
-            <input type="number" name="minprice" value="<?php echo $minprice; ?>">
+            <input type="number" name="minprice">
             <label>max:</label>
-            <input type="number" name="maxprice" value="<?php echo $maxprice; ?>">
+            <input type="number" name="maxprice">
 
             <label>Size:</label>
             <select name="size">
@@ -55,7 +51,10 @@
             </select>
             <button type="submit" name="">Filter</button>
         </form>
+
         <?php
+            // Define arguments
+            
                 $args = array(
                     'post_type' => 'post',
                     'posts_per_page' => -1,
@@ -69,17 +68,23 @@
 
                         array(
                             'key' => 'size',
+                            'type' => 'CHAR',
                             'value' => $size,
                             'compare' => 'LIKE'
                         ),
 
                         array(
                             'key' => 'color',
+                            'type' => 'CHAR',
                             'value' => $color,
                             'compare' => 'LIKE'
                         )
                     )
                 );
+            
+                
+
+
                 $query = new WP_Query($args);
                 while($query -> have_posts()) : $query -> the_post();
         ?>

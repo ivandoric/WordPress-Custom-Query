@@ -60,3 +60,15 @@ form{
         font-size: 14px;
     }
 }
+
+.search-site{
+    text-align: center;
+    form{
+        background: #333;
+        color:#fff;
+        
+        input{
+            width:500px;
+        }
+    }
+}

@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+    
     <?php 
         if($_GET['minprice'] && !empty($_GET['minprice']))
         {
